@@ -1,15 +1,18 @@
 import React, {FC, memo} from "react";
+import {useSelector} from "react-redux";
+import {AppStateType} from "../../redux/store";
 
-export type MainType = {
-    name?: string,
-}
 
-export const Main: FC<MainType> = memo(({name}) => {
+
+export const Main: FC = memo(() => {
+
+    const isUser = useSelector<AppStateType>(state => state.isUser);
+    const isAdmin = useSelector<AppStateType>(state => state.isAdmin);
 
     return(
         <div>
             <h1>main</h1>
-            Привет, {name ? name : 'Гость'}!
+            Привет, { isUser ? 'Друг' : isAdmin ? 'Админ' : 'Гость'}!
         </div>
     )
 })
