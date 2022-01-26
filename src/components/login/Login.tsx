@@ -1,7 +1,8 @@
-import React, {ChangeEvent, FC, memo, useState} from "react";
+import React, {FC, memo, useState} from "react";
 import {loginAdmin, loginSuccess, loginUser, logoutAdmin, logoutUser} from "../../redux/login-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {ErrorMessage, Field, Form, Formik} from "formik";
+import {AppStateType} from "../../redux/store";
 
 
 const user = {login: 'user', password: 'user'}
@@ -10,7 +11,7 @@ const admin = {login: 'admin', password: 'admin'}
 
 export const Login: FC = memo(() => {
 
-    const isLoginSuccess = useSelector(state => state);
+    const isLoginSuccess = useSelector((state: AppStateType) => state.login.isLoginSuccess);
 
     const dispatch = useDispatch();
 

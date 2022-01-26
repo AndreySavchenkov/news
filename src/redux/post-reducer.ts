@@ -42,13 +42,15 @@ const initialState: StateType = {
 
 export type ActionTypes = ReturnType<typeof addPost>
 
-export const PostReducer = (state:StateType = initialState, action: ActionTypes) => {
-    switch(action.type) {
+export const PostReducer = (state: StateType = initialState, action: ActionTypes) => {
+    switch (action.type) {
         case ADD_POST:
             return {
                 ...state,
                 posts: [...state.posts, action.post]
             }
+        default:
+            return state
     }
 }
 
