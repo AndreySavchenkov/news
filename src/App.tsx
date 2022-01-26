@@ -5,12 +5,12 @@ import {Body} from "./components/body/Body";
 
 
 export const App: FC = memo(() => {
-  return (
-      <>
-          <Nav/>
-          <Body/>
-      </>
-  )
+    return (
+        <>
+            <Nav/>
+            <Body/>
+        </>
+    )
 })
 
 

@@ -1,6 +1,7 @@
 import React, {FC, memo} from "react";
 import {NavLink} from "react-router-dom";
 import logo from "../../assets/image/logo.svg";
+import {Login} from "../login/Login";
 
 
 export const Nav: FC = memo(() => {
@@ -8,12 +9,13 @@ export const Nav: FC = memo(() => {
     return (
         <nav>
             <div>
-                <img src={logo} alt="logo"/>
+                <NavLink to={'/'}><img src={logo} alt="logo"/></NavLink>
+
             </div>
             <div>
-                <NavLink to={'/main'}>Главная</NavLink>
+                <NavLink to={'/'}>Главная</NavLink>
                 <NavLink to={'/news'}>Новости</NavLink>
-                <NavLink to={'/login'}>Вход</NavLink>
+                <Login/>
             </div>
         </nav>
     )

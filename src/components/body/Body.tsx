@@ -10,7 +10,7 @@ export const Body: FC = memo(() => {
     return (
         <div>
             <Routes>
-                <Route path={'/main'} element={<Main/>}/>
+                <Route path={'/'} element={<Main name={''}/>}/>
                 <Route path={'/news'} element={<News/>}/>
                 <Route path={'/login'} element={<Login/>}/>
             </Routes>
