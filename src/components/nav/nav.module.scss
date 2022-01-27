@@ -1,0 +1,33 @@
+@import './../../scss/variables.scss';
+
+.nav {
+  background-color: $backgroundNav;
+  height: 13vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 470px) {
+    height: 13vh;
+    flex-direction: column;
+  }
+  .nav_logo{
+    margin-left: 5px;
+  }
+  .nav_container{
+    margin-right: 5px;
+    display: flex;
+    @media screen and (max-width: 470px) {
+      margin-bottom: 10px;
+    }
+    a{
+      margin-right: 10px;
+      text-decoration: none;
+      color: $textColor;
+      font-weight: bold;
+      &:hover {
+        transition: color 1.5s;
+        color: $secondTextColor;
+      }
+    }
+  }
+}

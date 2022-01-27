@@ -3,6 +3,7 @@ import {loginAdmin, loginSuccess, loginUser, logoutAdmin, logoutUser} from "../.
 import {useDispatch, useSelector} from "react-redux";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {AppStateType} from "../../redux/store";
+import style from "./login.module.scss";
 
 
 const user = {login: 'user', password: 'user'}
@@ -13,7 +14,6 @@ export const Login: FC = memo(() => {
 
     const dispatch = useDispatch();
 
-    const isLoginSuccess = useSelector((state: AppStateType) => state.login.isLoginSuccess);
     const isUser = useSelector((state: AppStateType) => state.login.isUser);
     const isAdmin = useSelector((state: AppStateType) => state.login.isAdmin);
 
@@ -21,17 +21,18 @@ export const Login: FC = memo(() => {
         dispatch(loginSuccess(false))
     }
 
-
     const [isLogin, setIsLogin] = useState(false)
 
     const toggleLogin = () => {setIsLogin(!isLogin)}
 
 
     return (
-        <div>
-            <button onClick={toggleLogin}>login</button>
+        <>
+            <button className={style.buttonLogin} onClick={toggleLogin}>
+                {isUser ? 'Юзер' : isAdmin ? 'Админ' : 'Логин'}
+            </button>
             {isLogin ?
-                <div>
+                <div className={style.formContainer}>
                     <Formik
                         initialValues={{ name: '', password: '' }}
                         validate={values => {
@@ -52,19 +53,19 @@ export const Login: FC = memo(() => {
                         }}
                     >
                         {({ isSubmitting }) => (
-                            <Form>
-                                <Field type="text" name="name" placeholder={'Имя...'}/>
+                            <Form className={style.form}>
+                                <Field type="text" name="name" placeholder={'Имя...'} autocomplete="off"/>
                                 <ErrorMessage name="name" component="div" />
                                 <Field type="password" name="password" placeholder={'Пароль...'}/>
                                 <ErrorMessage name="password" component="div" />
                                 <button type="submit" disabled={isSubmitting}>
-                                    Submit
+                                    Отправить
                                 </button>
                             </Form>
                         )}
                     </Formik>
                 </div>
                 : ''}
-        </div>
+        </>
     )
 })

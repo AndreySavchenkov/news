@@ -25,6 +25,7 @@ export const News: FC = memo(() => {
     }
     const onBlurHandler = (e: ChangeEvent<HTMLInputElement>) => {
         e.currentTarget.value = '';
+        setSearchValue('')
     }
 
     return (
