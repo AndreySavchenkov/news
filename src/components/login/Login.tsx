@@ -11,9 +11,16 @@ const admin = {login: 'admin', password: 'admin'}
 
 export const Login: FC = memo(() => {
 
-    const isLoginSuccess = useSelector((state: AppStateType) => state.login.isLoginSuccess);
-
     const dispatch = useDispatch();
+
+    const isLoginSuccess = useSelector((state: AppStateType) => state.login.isLoginSuccess);
+    const isUser = useSelector((state: AppStateType) => state.login.isUser);
+    const isAdmin = useSelector((state: AppStateType) => state.login.isAdmin);
+
+    if(!isUser && !isAdmin) {
+        dispatch(loginSuccess(false))
+    }
+
 
     const [isLogin, setIsLogin] = useState(false)
 
