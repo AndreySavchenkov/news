@@ -1,0 +1,18 @@
+@import './src/scss/variables';
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  p{
+    margin: 0;
+    font-weight: 500;
+    font-size: 28px;
+    color: $textColor;
+    span{
+      font-weight: 800;
+      color: $secondTextColor;
+    }
+  }
+}

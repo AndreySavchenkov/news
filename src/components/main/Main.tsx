@@ -1,6 +1,7 @@
 import React, {FC, memo} from "react";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../redux/store";
+import style from './main.module.scss';
 
 
 
@@ -10,9 +11,8 @@ export const Main: FC = memo(() => {
     const isAdmin = useSelector((state: AppStateType) => state.login.isAdmin);
 
     return(
-        <div>
-            <h1>main</h1>
-            Привет, { isUser ? 'Друг' : isAdmin ? 'Админ' : 'Гость'}!
+        <div className={style.container}>
+            <p>Привет,<span>{ isUser ? ' Друг' : isAdmin ? ' Админ' : ' Гость'}</span> !</p>
         </div>
     )
 })

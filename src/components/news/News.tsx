@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../redux/store";
 import { v1 as uuidv1 } from 'uuid';
 import {ProposeItem} from "./proposeItem/ProposeItem";
+import style from './news.module.scss';
 
 
 export const News: FC = memo(() => {
@@ -29,9 +30,9 @@ export const News: FC = memo(() => {
     }
 
     return (
-        <div>
+        <div className={style.container}>
 
-            <input type="text" placeholder={'Найти пост...'} onChange={changeHandler} onBlur={onBlurHandler}/>
+            <input className={style.searchInput} type="text" placeholder={'Найти пост...'} onChange={changeHandler} onBlur={onBlurHandler}/>
 
             {isUser ?
                 <Formik
@@ -66,27 +67,24 @@ export const News: FC = memo(() => {
                 </Formik>
                 : ''}
 
-            { isAdmin ? <h2>предложенные посты</h2> : null}
-
-            { isAdmin ? proposedPosts.map(p => <ProposeItem key={p.id} title={p.title} text={p.text} data={p.data} id={p.id}/>): null}
-
-            <h2>посты</h2>
-
-            {/*{posts.map(p => <Item key={p.id} title={p.title} text={p.text} data={p.data}/>)}*/}
+            { isAdmin ? <h2>Предложенные посты:</h2> : null}
+            <div className={style.postContainer}>
+                { isAdmin ? proposedPosts.map(p => <ProposeItem key={p.id} title={p.title} text={p.text} data={p.data} id={p.id}/>): null}
+            </div>
 
 
-
-            {posts ? posts.filter((val) => {
-                if (searchValue === '') {
-                    return val
-                } else if (val.title.toLowerCase().includes(searchValue.toLowerCase())) {
-                    return val
-                }
-            }).map(p => <Item key={p.id} title={p.title} text={p.text} data={p.data}/>) : ''}
+            <h2>Посты:</h2>
+            <div className={style.postContainer}>
 
 
-
-
+                {posts ? posts.filter((val) => {
+                    if (searchValue === '') {
+                        return val
+                    } else if (val.title.toLowerCase().includes(searchValue.toLowerCase())) {
+                        return val
+                    }
+                }).map(p => <Item key={p.id} title={p.title} text={p.text} data={p.data}/>) : ''}
+            </div>
         </div>
     )
 })

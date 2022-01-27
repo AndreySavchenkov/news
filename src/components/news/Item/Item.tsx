@@ -1,4 +1,5 @@
 import React, {FC, memo} from "react";
+import style from './item.module.scss';
 
 export type ItemType = {
     title: string,
@@ -9,12 +10,10 @@ export type ItemType = {
 export const Item: FC<ItemType> = memo(({title,text,data}) => {
 
     return (
-        <div>
-            <br/>
-            <div>{title}</div>
-            <div>{text}</div>
-            <div>{data}</div>
-            <br/>
+        <div className={style.itemContainer}>
+            <div className={style.itemTitle}>{title}</div>
+            <div className={style.itemText}>{text}</div>
+            <div className={style.itemDate}>{data}</div>
         </div>
     )
 })
