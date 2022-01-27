@@ -1,4 +1,4 @@
-import React, {FC, memo} from "react";
+import React, {ChangeEvent, FC, memo, useState} from "react";
 import {Item} from "./Item/Item";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {proposePost} from "../../redux/post-reducer";
@@ -18,8 +18,19 @@ export const News: FC = memo(() => {
 
     const dispatch = useDispatch();
 
+    const [searchValue, setSearchValue] = useState('')
+
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(e.currentTarget.value)
+    }
+    const onBlurHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        e.currentTarget.value = '';
+    }
+
     return (
         <div>
+
+            <input type="text" placeholder={'Найти пост...'} onChange={changeHandler} onBlur={onBlurHandler}/>
 
             {isUser ?
                 <Formik
@@ -60,9 +71,17 @@ export const News: FC = memo(() => {
 
             <h2>посты</h2>
 
-            {posts.map(p => <Item key={p.id} title={p.title} text={p.text} data={p.data}/>)}
+            {/*{posts.map(p => <Item key={p.id} title={p.title} text={p.text} data={p.data}/>)}*/}
 
 
+
+            {posts ? posts.filter((val) => {
+                if (searchValue === '') {
+                    return val
+                } else if (val.title.toLowerCase().includes(searchValue.toLowerCase())) {
+                    return val
+                }
+            }).map(p => <Item key={p.id} title={p.title} text={p.text} data={p.data}/>) : ''}
 
 
 
