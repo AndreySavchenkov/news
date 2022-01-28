@@ -46,10 +46,10 @@ export const Login: FC = memo(() => {
                             const errors: any = {};
                             //@ts-ignore
                             if (values.name !== 'user' && values.name !== 'admin') {
-                                errors.name = 'Не верное имя или пороль!';
+                                errors.name = 'Неверное имя или пароль!';
                             }
                             if (values.password !== 'user' && values.password !== 'admin') {
-                                errors.password = 'Не верное имя или пороль!';
+                                errors.password = 'Неверное имя или пароль!';
                             }
                             return errors;
                         }}

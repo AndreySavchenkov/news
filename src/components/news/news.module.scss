@@ -24,6 +24,12 @@
     input, textarea {
       margin-bottom: 10px;
     }
+    input{
+      height: 30px;
+    }
+    textarea{
+      height: 60px;
+    }
 
     button {
       margin: 0 auto;
@@ -54,6 +60,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 10px 0;
     }
   }
 }
