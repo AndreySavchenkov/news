@@ -2,13 +2,15 @@ SPA(React + Redux + Typescript)
 
 GitHub Page: https://andreysavchenkov.github.io/news/
 
-User -  login: user         - создает и закидывает админу на проверку пост
-        password: user
+User -  login: user, password: user
         
-Admin - login: admin        - одобряет либо оклоняет, предложенные юзером посты
-        password: admin
+Cоздает и закидывает админу на проверку пост.
+           
+Admin - login: admin, password: admin
         
-Guest -                     -  видит только одобренные админом новости
+Одобряет либо отклоняет, предложенные юзером посты.        
+                
+Guest -  видит только одобренные админом новости
         
         
        
