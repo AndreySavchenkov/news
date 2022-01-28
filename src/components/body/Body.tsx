@@ -11,7 +11,7 @@ export const Body: FC = memo(() => {
     return (
         <div className={style.container}>
             <Routes>
-                <Route path='/'  element={<Main/>}/>
+                <Route path='/' element={<Main/>}/>
                 <Route path='/newsPage' element={<News/>}/>
                 <Route path='/login' element={<Login/>}/>
             </Routes>

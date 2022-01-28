@@ -10,23 +10,29 @@
     height: 13vh;
     flex-direction: column;
   }
-  .nav_logo{
+
+  .nav_logo {
     margin-left: 5px;
   }
-  .nav_container{
+
+  .nav_container {
     margin-right: 5px;
     display: flex;
-    .active{
+
+    .active {
       color: $secondTextColor;
     }
+
     @media screen and (max-width: 470px) {
       margin-bottom: 10px;
     }
-    a{
+
+    a {
       margin-right: 10px;
       text-decoration: none;
       color: $textColor;
       font-weight: bold;
+
       &:hover {
         transition: color 1.5s;
         color: $secondTextColor;

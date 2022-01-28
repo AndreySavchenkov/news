@@ -20,9 +20,11 @@
     background-color: $backgroundNav;
     border-radius: 8px;
     padding: 10px;
+
     input, textarea {
       margin-bottom: 10px;
     }
+
     button {
       margin: 0 auto;
       padding: 5px;
@@ -38,6 +40,7 @@
 
   h2 {
     color: $secondTextColor;
+    margin-top: 30px;
   }
 
   .postContainer {

@@ -10,7 +10,8 @@
   font-weight: 600;
   position: relative;
 }
-.formContainer{
+
+.formContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,24 +21,41 @@
   right: 0;
   left: 0;
   background-color: $backgroundNav;
-  .form{
+
+  .form {
     height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+
+    img {
+      position: absolute;
+      top: -150px;
+      right: 0;
+      cursor: pointer;
+
+      &:hover {
+        transform: rotate(180deg);
+        transition: transform 0.5s;
+
+      }
+    }
+
     input {
       height: 30px;
       width: 300px;
     }
-    div{
+
+    div {
       color: red;
       font-size: 18px;
       font-weight: 500;
       position: absolute;
       top: -50px;
     }
-    button{
+
+    button {
       height: 30px;
       background-color: $buttonColor;
       color: $textColor;

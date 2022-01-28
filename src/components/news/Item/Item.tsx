@@ -7,7 +7,7 @@ export type ItemType = {
     data: string,
 }
 
-export const Item: FC<ItemType> = memo(({title,text,data}) => {
+export const Item: FC<ItemType> = memo(({title, text, data}) => {
 
     return (
         <div className={style.itemContainer}>

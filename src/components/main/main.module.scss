@@ -1,16 +1,18 @@
 @import './src/scss/variables';
 
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 100px;
-  p{
+
+  p {
     margin: 0;
     font-weight: 500;
     font-size: 28px;
     color: $textColor;
-    span{
+
+    span {
       font-weight: 800;
       color: $secondTextColor;
     }

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {AppStateType} from "../../redux/store";
 import style from "./login.module.scss";
+import iconClose from "./../../assets/image/cancel.png"
 
 
 const user = {login: 'user', password: 'user'}
@@ -17,13 +18,19 @@ export const Login: FC = memo(() => {
     const isUser = useSelector((state: AppStateType) => state.login.isUser);
     const isAdmin = useSelector((state: AppStateType) => state.login.isAdmin);
 
-    if(!isUser && !isAdmin) {
+    if (!isUser && !isAdmin) {
         dispatch(loginSuccess(false))
     }
 
     const [isLogin, setIsLogin] = useState(false)
 
-    const toggleLogin = () => {setIsLogin(!isLogin)}
+    const toggleLogin = () => {
+        setIsLogin(!isLogin)
+    }
+
+    const closeModal = () => {
+        setIsLogin(false);
+    }
 
 
     return (
@@ -34,7 +41,7 @@ export const Login: FC = memo(() => {
             {isLogin ?
                 <div className={style.formContainer}>
                     <Formik
-                        initialValues={{ name: '', password: '' }}
+                        initialValues={{name: '', password: ''}}
                         validate={values => {
                             const errors: any = {};
                             //@ts-ignore
@@ -46,26 +53,27 @@ export const Login: FC = memo(() => {
                             }
                             return errors;
                         }}
-                        onSubmit={(values, { setSubmitting }) => {
+                        onSubmit={(values, {setSubmitting}) => {
                             setIsLogin(false)
                             dispatch(logoutAdmin())
                             dispatch(logoutUser())
-                            if(values.name === user.login && values.password === user.password) {
+                            if (values.name === user.login && values.password === user.password) {
                                 dispatch(loginUser())
                                 dispatch(loginSuccess(true))
                             }
-                            if(values.name === admin.login && values.password === admin.password) {
+                            if (values.name === admin.login && values.password === admin.password) {
                                 dispatch(loginAdmin())
                                 dispatch(loginSuccess(true))
                             }
                         }}
                     >
-                        {({ isSubmitting }) => (
+                        {({isSubmitting}) => (
                             <Form className={style.form}>
+                                <img onClick={closeModal} src={iconClose} alt="cancel logo" width='32px' height='32px'/>
                                 <Field type="text" name="name" placeholder={'Имя...'} autocomplete="off"/>
-                                <ErrorMessage  name="name" component="div" />
+                                <ErrorMessage name="name" component="div"/>
                                 <Field type="password" name="password" placeholder={'Пароль...'}/>
-                                <ErrorMessage name="password" component="div" />
+                                <ErrorMessage name="password" component="div"/>
                                 <button type="submit" disabled={isSubmitting}>
                                     Отправить
                                 </button>
