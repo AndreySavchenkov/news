@@ -54,13 +54,13 @@ export const News: FC = memo(() => {
                     }}
                 >
                     {() => (
-                        <Form>
-                            <Field type="text" name="title" placeholder={'Заголовок...'}/>
+                        <Form className={style.addPostContainer}>
+                            <Field classname={style.formTitle} type="text" name="title" placeholder={'Заголовок...'} autocomplete="off"/>
                             <ErrorMessage name="title" component="div"/>
-                            <Field type="text" name="text" placeholder={'Текст...'}/>
+                            <Field classname={style.formText} as='textarea' type="textarea" name="text" placeholder={'Текст...'} autocomplete="off"/>
                             <ErrorMessage name="text" component="div"/>
                             <button type="submit" >
-                                Предложить Пост
+                                Предложить
                             </button>
                         </Form>
                     )}

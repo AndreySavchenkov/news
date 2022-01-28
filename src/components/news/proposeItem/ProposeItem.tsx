@@ -1,6 +1,7 @@
 import React, {FC, memo} from "react";
 import {useDispatch} from "react-redux";
 import {approveProposePost, deleteProposePost} from "../../../redux/post-reducer";
+import style from "./proposeItem.module.scss";
 
 export type ProposeItemType = {
     title: string,
@@ -23,14 +24,14 @@ export const ProposeItem: FC<ProposeItemType> = memo(({title, text, data, id}) =
     }
 
     return (
-        <div>
-            <br/>
-            <div>{title}</div>
-            <div>{text}</div>
-            <div>{data}</div>
-            <button onClick={proposeHandler}>Одобрить</button>
-            <button onClick={deleteHandler}>Удалить</button>
-            <br/>
+        <div className={style.itemContainer}>
+            <div className={style.itemTitle}>{title}</div>
+            <div className={style.itemText}>{text}</div>
+            <div className={style.itemDate}>{data}</div>
+            <div className={style.buttonContainer}>
+                <button onClick={proposeHandler}>Одобрить</button>
+                <button onClick={deleteHandler}>Удалить</button>
+            </div>
         </div>
     )
 })
