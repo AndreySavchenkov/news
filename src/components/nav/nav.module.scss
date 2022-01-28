@@ -16,6 +16,9 @@
   .nav_container{
     margin-right: 5px;
     display: flex;
+    .active{
+      color: $secondTextColor;
+    }
     @media screen and (max-width: 470px) {
       margin-bottom: 10px;
     }
