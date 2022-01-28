@@ -37,6 +37,14 @@ export const Login: FC = memo(() => {
                         initialValues={{ name: '', password: '' }}
                         validate={values => {
                             const errors: any = {};
+                            //@ts-ignore
+                            if (values.name !== 'user' && values.name !== 'admin') {
+                                errors.name = 'Не верное имя или пороль!';
+                            }
+                            if (values.password !== 'user' && values.password !== 'admin') {
+                                errors.password = 'Не верное имя или пороль!';
+                            }
+                            return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
                             setIsLogin(false)
@@ -55,7 +63,7 @@ export const Login: FC = memo(() => {
                         {({ isSubmitting }) => (
                             <Form className={style.form}>
                                 <Field type="text" name="name" placeholder={'Имя...'} autocomplete="off"/>
-                                <ErrorMessage name="name" component="div" />
+                                <ErrorMessage  name="name" component="div" />
                                 <Field type="password" name="password" placeholder={'Пароль...'}/>
                                 <ErrorMessage name="password" component="div" />
                                 <button type="submit" disabled={isSubmitting}>
